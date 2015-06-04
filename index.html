@@ -7,25 +7,34 @@
     <link href='http://fonts.googleapis.com/css?family=Cabin:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   </head>
   <body>
+    <section class="tweetFeed"></section>
+    <section class="timestamp"></section>
     <script>
 
       $(document).ready(function(){
-        var $body = $('body');
-        $body.html('');
+        var $tweetFeed = $('.tweetFeed');
+        var $timestamp = $('.timestamp');
+
 
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
           var $tweet = $('<div></div>');
+          var $time = $('<div></div>');
           $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.appendTo($body);
+          $time.text(tweet.created_at);
+          $tweet.appendTo($tweetFeed);
+          $time.appendTo($timestamp);
           index -= 1;
         }
         $(document).on("tweetAdded", function(){
           var tweet = streams.home[streams.home.length - 1];
           var $tweet = $('<div class="load"></div>');
+          var $time = $('<div class="load"></div>');
           $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.prependTo($body).animate({'opacity': '1'}, 800);
+          $time.text(tweet.created_at);
+          $tweet.prependTo($tweetFeed).animate({'opacity': '1'}, 800);
+          $time.prependTo($timestamp).animate({'opacity': '1'}, 800);
         });
 
       });
