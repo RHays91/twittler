@@ -52,3 +52,10 @@ FONTS
 body {
 	font: 400 16px/24px "Cabin", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
+/*******************
+TWEETS
+*******************/
+.load {
+	opacity: 0;
+}
+
