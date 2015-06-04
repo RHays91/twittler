@@ -56,7 +56,7 @@ var scheduleNextTweet = function(){
     type: "tweetAdded",
     timeToRefresh: true
   });
-  setTimeout(scheduleNextTweet, Math.random() * 1500);
+  setTimeout(scheduleNextTweet, Math.random() * 2500 + 1500);
 };
 scheduleNextTweet();
 
