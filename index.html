@@ -23,9 +23,9 @@
         }
         $(document).on("tweetAdded", function(){
           var tweet = streams.home[streams.home.length - 1];
-          var $tweet = $('<div></div>');
+          var $tweet = $('<div class="load"></div>');
           $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          $tweet.prependTo($body);
+          $tweet.prependTo($body).animate({'opacity': '1'}, 800);
         });
 
       });
