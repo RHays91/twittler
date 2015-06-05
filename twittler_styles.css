@@ -58,4 +58,13 @@ TWEETS
 .load {
 	opacity: 0;
 }
-
+/*******************
+LAYOUT
+*******************/
+.tweetFeed {
+	float: left;
+}
+.timestamp {
+	float: right;
+	font-style: italic;
+}
