@@ -6,10 +6,21 @@
     <script src="data_generator.js"></script>
     <link rel="stylesheet" href="twittler_styles.css">
     <link href='http://fonts.googleapis.com/css?family=Cabin:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <title>Twittler</title>
   </head>
   <body>
+    <header class="grid primary-header">
+      <section>
+        <a class="tweet group" href="tweet.html"><img src="owlbutton.png"></a>
+        <h1 class="logo">Twittler</h1>
+        <h2 class="slogan">Wisdom to Live By</h2>
+      </section>
+    </header>
+    <div class="grid container">
     <section class="tweetFeed"></section>
     <section class="timestamp"></section>
+    </div>
+
     <script>
 
       $(document).ready(function(){
@@ -19,20 +30,22 @@
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
-          var $tweet = $('<div></div>');
-          var $time = $('<div class></div>');
+          var $tweet = $('<div class="twt initial"></div>');
+          var $time = $('<div class="initial"></div>');
           $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          window.setInterval(function(){$time.text($.timeago(tweet.created_at))}, 1000);
+          setInterval(function(){$time.text($.timeago(tweet.created_at))}, 100);
           $tweet.appendTo($tweetFeed);
           $time.appendTo($timestamp);
           index -= 1;
         }
+
         $(document).on("tweetAdded", function(){
           var tweet = streams.home[streams.home.length - 1];
-          var $tweet = $('<div class="load"></div>');
+          var $tweet = $('<div class="twt load"></div>').wrap('<a href="/usertimeline.html/"/>');
           var $time = $('<div class="load"></div>');
+          //$('.twt').wrap('<a href="/usertimeline.html/"/>');
           $tweet.text('@' + tweet.user + ': ' + tweet.message);
-          window.setInterval(function(){$time.text($.timeago(tweet.created_at))}, 1000);
+          setInterval(function(){$time.text($.timeago(tweet.created_at))}, 100);
           $tweet.prependTo($tweetFeed).animate({'opacity': '1'}, 800);
           $time.prependTo($timestamp).animate({'opacity': '1'}, 800);
         });
