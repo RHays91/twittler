@@ -60,7 +60,7 @@ GRID
 .grid {
 	margin: 0 auto;
 	vertical-align: middle;
-	width: 960px;
+	width: 1060px;
 }
 .container {
 	padding-left: 30px;
@@ -94,9 +94,8 @@ h1 {
 h2 {
 	padding: 5px 0 10px 0;
 	font-size: 20px;
-	color: #E0E0E0;
+	color: #ffffff;
 }
-
 /*******************
 TWEETS
 *******************/
@@ -109,27 +108,21 @@ TWEETS
 	padding: 10px 0;
 }
 .tweet {
-	float:right;
+	float: right;
 }
 /*******************
 LAYOUT
 *******************/
-/*html {
-	display: table;
-	margin: auto;
+.usernames {
+	float: left;
 }
-body {
-	display: table-cell;
-	vertical-align: middle;
-}*/
 .tweetFeed {
 	float: left;
+	margin-left: 15px;
 }
 
 .timestamp {
-	display: inline-block;
 	float: right;
-	margin-left: 80px;
 	font-style: italic;
 }
 /*******************
