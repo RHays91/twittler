@@ -17,6 +17,7 @@
       </section>
     </header>
     <div class="grid container">
+    <section class="usernames group"></section>
     <section class="tweetFeed"></section>
     <section class="timestamp"></section>
     </div>
@@ -26,14 +27,17 @@
       $(document).ready(function(){
         var $tweetFeed = $('.tweetFeed');
         var $timestamp = $('.timestamp');
-
+        var $usernames = $('.usernames');
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
-          var $tweet = $('<div class="twt initial"></div>');
+          var $user = $('<div class="initial btn-user"></div>');
+          var $tweet = $('<div class="initial"></div>');
           var $time = $('<div class="initial"></div>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          $user.text('@' + tweet.user + ': ');
+          $tweet.text(tweet.message);
           setInterval(function(){$time.text($.timeago(tweet.created_at))}, 100);
+          $user.appendTo($usernames)
           $tweet.appendTo($tweetFeed);
           $time.appendTo($timestamp);
           index -= 1;
@@ -41,11 +45,13 @@
 
         $(document).on("tweetAdded", function(){
           var tweet = streams.home[streams.home.length - 1];
-          var $tweet = $('<div class="twt load"></div>').wrap('<a href="/usertimeline.html/"/>');
+          var $user = $('<div class="load btn-user"></div>');
+          var $tweet = $('<div class="load"></div>');
           var $time = $('<div class="load"></div>');
-          //$('.twt').wrap('<a href="/usertimeline.html/"/>');
-          $tweet.text('@' + tweet.user + ': ' + tweet.message);
+          $user.text('@' + tweet.user + ': ');
+          $tweet.text(tweet.message);
           setInterval(function(){$time.text($.timeago(tweet.created_at))}, 100);
+          $user.prependTo($usernames).animate({'opacity': '1'}, 800);
           $tweet.prependTo($tweetFeed).animate({'opacity': '1'}, 800);
           $time.prependTo($timestamp).animate({'opacity': '1'}, 800);
         });
