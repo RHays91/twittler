@@ -19,8 +19,7 @@
     </header>
     <div class="post grid container">
       <form id="post" onsubmit="return false;">
-        <input type="text" id="tweetbox">
-        <input type="submit" value="Hoot">
+        <input type="text" id="tweetbox" onclick="this.value='';" onfocus="this.select()" onblur="this.value=!this.value?'Share your wisdom...':this.value;" value="Share your wisdom..." />
       </form>
     </div>
         <section class="grid primary-header">
