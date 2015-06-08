@@ -12,6 +12,7 @@ streams.users.sharksforcheap = [];
 streams.users.mracus = [];
 streams.users.douglascalhoun = [];
 window.users = Object.keys(streams.users);
+streams.users.TheGreatSage = [];
 
 // utility function for adding tweets to our data structures
 var addTweet = function(newTweet){
@@ -44,6 +45,9 @@ var generateRandomTweet = function(){
   tweet.message = randomMessage();
   tweet.created_at = new Date();
   addTweet(tweet);
+  $.event.trigger({
+    type: "tweetAdded"
+  });
 };
 
 for(var i = 0; i < 10; i++){
@@ -52,10 +56,6 @@ for(var i = 0; i < 10; i++){
 
 var scheduleNextTweet = function(){
   generateRandomTweet();
-  $.event.trigger({
-    type: "tweetAdded",
-    timeToRefresh: true
-  });
   setTimeout(scheduleNextTweet, Math.random() * 2500 + 1500);
 };
 scheduleNextTweet();
@@ -69,5 +69,9 @@ var writeTweet = function(message){
   var tweet = {};
   tweet.user = visitor;
   tweet.message = message;
+  tweet.created_at = new Date();
   addTweet(tweet);
+  $.event.trigger({
+    type: "tweetAdded"
+  });
 };

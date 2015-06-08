@@ -84,9 +84,6 @@ HEADINGS
 	color: #ffffff;
 
 }
-/*.userSelected {
-	float: left;
-}*/
 .userButton {
 	float: left;
 	width: 80px;
@@ -120,19 +117,21 @@ h4 {
 /*******************
 TWEETS
 *******************/
-.initial {
+.initial,
+.load {
 	padding: 10px 0;
-	color: #575757;
 }
 .load {
 	opacity: 0;
-	padding: 10px 0;
 }
 .tweet {
 	float: right;
 }
 #tweetbox {
 	width: 50%;
+}
+[data-usn="TheGreatSage"] {
+	color: #C2E0FF;
 }
 /*******************
 LAYOUT
@@ -154,6 +153,7 @@ LAYOUT
 .timestamp {
 	float: right;
 	font-style: italic;
+	color: #999999;
 }
 /*******************
 CLEARFIX

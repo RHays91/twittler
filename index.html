@@ -20,7 +20,7 @@
     <div class="post grid container">
       <form id="post" onsubmit="return false;">
         <input type="text" id="tweetbox">
-        <input type="submit" value="Submit">
+        <input type="submit" value="Hoot">
       </form>
     </div>
         <section class="grid primary-header">
@@ -33,17 +33,16 @@
     </div>
 
     <script>
-    var visitor = "newcomer";
+      var visitor = "TheGreatSage";
       $(document).ready(function(){
-        var visitor = "newcomer";
 
         $('.tweet').on("mouseover", function(){
           $('.post').toggle();
         });
-        /*$('#post').on("submit", function(){
+        $('#post').on("submit", function(){
           var enteredTweet = $('#tweetbox').val();
-          writeTweet(enteredTweet);
-        });*/
+          return writeTweet(enteredTweet);
+        });
 
         var $tweetFeed = $('.tweetFeed');
         var $timestamp = $('.timestamp');
@@ -74,9 +73,12 @@
           $user.text('@' + tweet.user + ': ');
           $tweet.text(tweet.message);
           setInterval(function(){$time.text($.timeago(tweet.created_at))}, 100);
-          $user.prependTo($usernames).animate({'opacity': '1'}, 800);
-          $tweet.prependTo($tweetFeed).animate({'opacity': '1'}, 800);
-          $time.prependTo($timestamp).animate({'opacity': '1'}, 800);
+          $user.prependTo($usernames).animate({'opacity': '1'}, 600);
+          $tweet.prependTo($tweetFeed).animate({'opacity': '1'}, 600);
+          $time.prependTo($timestamp).animate({'opacity': '1'}, 600);
+        });
+        $('.usernames, .userButton, img').on("mouseover", function(){
+          $(this).css('cursor', 'pointer');
         });
         $('.usernames').on('click', 'div', function() {
           var currentUser = $(this).data('usn');
