@@ -29,7 +29,18 @@
     </div>
 
     <script>
+    var visitor = "newcomer";
       $(document).ready(function(){
+        var visitor = "newcomer";
+
+        $('.tweet').on("mouseover", function(){
+          $('.post').toggle();
+        });
+        /*$('#post').on("submit", function(){
+          var enteredTweet = $('#tweetbox').val();
+          writeTweet(enteredTweet);
+        });*/
+
         var $tweetFeed = $('.tweetFeed');
         var $timestamp = $('.timestamp');
         var $usernames = $('.usernames');
