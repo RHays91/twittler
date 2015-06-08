@@ -11,9 +11,10 @@
   <body>
     <header class="grid primary-header">
       <section>
-        <img class="tweet" src="owlbutton.png">
+        <img class="tweet group" src="owlbutton.png">
         <h1 class="logo">Twittler</h1>
         <h2 class="slogan">Wisdom to Live By</h2>
+        <h4 class="userSelected group"></h4>
       </section>
     </header>
     <div class="post grid container">
@@ -22,6 +23,9 @@
         <input type="submit" value="Submit">
       </form>
     </div>
+        <section class="grid primary-header">
+          <button class="userButton group">Resume</button>
+        </section>
     <div class="feed grid container">
     <section class="usernames group"></section>
     <section class="tweetFeed"></section>
@@ -80,8 +84,14 @@
             return $(this).data('usn') !== currentUser;
           }).hide();
           userSelected = true;
+          $('.userSelected').text('@' + currentUser);
+          $('.userButton, .userSelected').show();
         });
-
+        $('.userButton').on('click', function() {
+          $('.feed').find('div').show();
+          userSelected = false;
+          $('.userButton, .userSelected').hide();
+        });
       });
     </script>
   </body>
