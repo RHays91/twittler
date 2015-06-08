@@ -11,19 +11,24 @@
   <body>
     <header class="grid primary-header">
       <section>
-        <a class="tweet group" href="tweet.html"><img src="owlbutton.png"></a>
+        <img class="tweet" src="owlbutton.png">
         <h1 class="logo">Twittler</h1>
         <h2 class="slogan">Wisdom to Live By</h2>
       </section>
     </header>
-    <div class="grid container">
+    <div class="post grid container">
+      <form id="post" onsubmit="return false;">
+        <input type="text" id="tweetbox">
+        <input type="submit" value="Submit">
+      </form>
+    </div>
+    <div class="feed grid container">
     <section class="usernames group"></section>
     <section class="tweetFeed"></section>
     <section class="timestamp"></section>
     </div>
 
     <script>
-
       $(document).ready(function(){
         var $tweetFeed = $('.tweetFeed');
         var $timestamp = $('.timestamp');
@@ -31,9 +36,9 @@
         var index = streams.home.length - 1;
         while(index >= 0){
           var tweet = streams.home[index];
-          var $user = $('<div class="initial btn-user"></div>');
-          var $tweet = $('<div class="initial"></div>');
-          var $time = $('<div class="initial"></div>');
+          var $user = $('<div class="initial" data-usn="' + tweet.user + '"></div>');
+          var $tweet = $('<div class="initial" data-usn="' + tweet.user + '"></div>');
+          var $time = $('<div class="initial" data-usn="' + tweet.user + '"></div>');
           $user.text('@' + tweet.user + ': ');
           $tweet.text(tweet.message);
           setInterval(function(){$time.text($.timeago(tweet.created_at))}, 100);
@@ -45,9 +50,9 @@
 
         $(document).on("tweetAdded", function(){
           var tweet = streams.home[streams.home.length - 1];
-          var $user = $('<div class="load btn-user"></div>');
-          var $tweet = $('<div class="load"></div>');
-          var $time = $('<div class="load"></div>');
+          var $user = $('<div class="load" data-usn="' + tweet.user + '"></div>');
+          var $tweet = $('<div class="load" data-usn="' + tweet.user + '"></div>');
+          var $time = $('<div class="load" data-usn="' + tweet.user + '"></div>');
           $user.text('@' + tweet.user + ': ');
           $tweet.text(tweet.message);
           setInterval(function(){$time.text($.timeago(tweet.created_at))}, 100);
@@ -55,9 +60,14 @@
           $tweet.prependTo($tweetFeed).animate({'opacity': '1'}, 800);
           $time.prependTo($timestamp).animate({'opacity': '1'}, 800);
         });
+        $('.usernames').on('click', 'div', function() {
+          var currentUser = $(this).data('usn');
+          $('.feed').find('div').filter(function(){
+            return $(this).data('usn') !== currentUser;
+          }).hide();
+        });
 
       });
-
     </script>
   </body>
 </html>

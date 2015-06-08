@@ -76,7 +76,7 @@ HEADINGS
 .primary-header {
 	background-color: #135494;
 	background-image: linear-gradient(to top, #135494 15%, #C2E0FF);
-	border-radius: 8px;
+	border-radius: 8px 8px 0 0;
 }
 /*******************
 TYPOGRAPHY
@@ -110,9 +110,18 @@ TWEETS
 .tweet {
 	float: right;
 }
+#tweetbox {
+	width: 50%;
+}
 /*******************
 LAYOUT
 *******************/
+.post {
+	display: none;
+	padding: 15px 30px;
+	background-color: #1A4169;
+	background-image: linear-gradient(to top, #1A4169, #135494);
+}
 .usernames {
 	float: left;
 }
