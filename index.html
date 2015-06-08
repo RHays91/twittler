@@ -58,8 +58,11 @@
           $time.appendTo($timestamp);
           index -= 1;
         }
-
+        var userSelected = false;
         $(document).on("tweetAdded", function(){
+          if(userSelected){
+            return;
+          }
           var tweet = streams.home[streams.home.length - 1];
           var $user = $('<div class="load" data-usn="' + tweet.user + '"></div>');
           var $tweet = $('<div class="load" data-usn="' + tweet.user + '"></div>');
@@ -76,6 +79,7 @@
           $('.feed').find('div').filter(function(){
             return $(this).data('usn') !== currentUser;
           }).hide();
+          userSelected = true;
         });
 
       });
